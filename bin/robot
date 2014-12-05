@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+# Import required classes
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../lib'))
+
+require 'robot'
+
+puts "You have the commands:
+PLACE <x:int>,<y:int>,<direction:string>
+MOVE
+LEFT
+RIGHT
+REPORT
+
+"
+
+# Handle user input and output string results
+robot = Robot.new
+putc '> '
+while input = gets and input.length > 1
+	if (output = robot.handle_input(input)).is_a? String
+		puts output
+	end
+	putc '> '
+end
